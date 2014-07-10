@@ -89,15 +89,19 @@ function get_closest_version_by_time($t) {
 
 /** Return a "sane" latest build for searching. */
 function get_build_cutoff() {
-	$vers = array_values(get_eve_db_versions());
-	$nvers = count($vers);
-	$build = $vers[0]['build'];
-	$dogmavercutoff = $vers[0]['dogmaver'] - 2;
+	// Don't cutoff by build version
+        return 1;
+        /*$vers = array_values(get_eve_db_versions());
+        $nvers = count($vers);
+        $build = $vers[0]['build'];
+        $dogmavercutoff = $vers[0]['dogmaver'] - 2;
 
-	for($i = 1; $i < $nvers; ++$i) {
-		if($vers[$i]['dogmaver'] < $dogmavercutoff) return $build;
-		$build = $vers[$i]['build'];
-	}
+        for($i = 1; $i < $nvers; ++$i) {
+                if($vers[$i]['dogmaver'] < $dogmavercutoff) return $build;
+                $build = $vers[$i]['build'];
+        }
 
-	return $build;
+        return $build;
+        */
+
 }
